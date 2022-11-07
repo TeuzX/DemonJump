@@ -4,45 +4,187 @@
     box-sizing: border-box;
 }
 
-.game-board {
+
+/* PÁGINA INICIAL */
+
+.start-page {
+    position: relative;
     width: 100%;
-    height: 500px;
-    border: 15px rgb(2, 2, 2);
+    height: 100vh;
     margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 100px;
+    background-image: url('../Imagens/Menu.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.start-page .titulo {
+    height: 200px;
+}
+
+.choose-character {
+    margin: 50px 0;
+}
+
+.choose-character .title {
+    margin-bottom: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #f00;
+}
+
+.choose-character .char {
+    height: 170px;
+    cursor: pointer;
+}
+
+.choose-character .char:nth-child(2) {
+    margin: 0 50px;
+}
+
+.start-page .start {
+    width: 150px;
+    height: 65px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px 0px #888;
+    font-size: 24px;
+    border-radius: 20px;
+}
+
+.start-page .start:hover {
+    background-color: #eee;
+}
+
+.start-page .start a {
+    color: #000;
+}
+
+/* JOGO */
+
+.game-board {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    border-bottom: 10px #464646 solid;
     position: relative;
     overflow: hidden;
+    background-image: url(../Imagens/Fundo.gif);
+    background-repeat: no-repeat;
+    background-size: 245vh;
 }
-
-.fundo {
+.fundo{
+    position: absolute;
     width: 100%;
-    height: 500px;
+    height: 100%;
+}
+.obstaculo {
+    position: absolute;
+    bottom: 5px;
+    width: 140px;
+    animation: obstaculo-animation 1.5s infinite linear;
 }
 
-.alien {
+.Tanjiro {
+    width: 200px;
     position: absolute;
-    bottom: 0;
-    width: 100px;
-    animation: alien-animation 1.5s infinite linear;
-}
-
-.homem {
-    width: 100px;
-    position: absolute;
-    bottom: 0;
-    
+    bottom: 5px;
 }
 
 .jump {
     animation: jump 500ms  ease-out;
 }
 
-.naves {
-    position: absolute ;
-    width: 1500px;
-    animation: naves-animation 20s infinite linear;
+
+.punctuation {
+    position: absolute;
+    z-index: 99;
+    top: 20px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
 }
 
-@keyframes alien-animation {
+.score,
+.Highscore {
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+.score{
+    background-color: #fff;
+    color: #000;
+    margin-right: 20px;
+}
+
+.Highscore{
+    background-color: #000;
+    color: #fff;
+
+}
+
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 50px;
+}
+
+
+.opacity {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.3);
+}
+
+.menu-morte{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 500px;
+    height: 250px;
+    background-color: #fff;
+    padding: 20px 0;
+}
+
+.menu-morte button {
+    width: 200px;
+    height: 65px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 5px 5px 0px 0px #bbb;
+}
+
+.menu-morte button a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+
+@keyframes obstaculo-animation {
     from {
         right: -80px;
     }
